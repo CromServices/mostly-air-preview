@@ -148,15 +148,25 @@
         var email = fieldValue(form, "email");
         var suburb = fieldValue(form, "suburb");
         var details = fieldValue(form, "details");
-        var typeEl = form.elements.work;
-        var whenEl = form.elements.when;
+        var workVal = fieldValue(form, "work");
+        var whenVal = fieldValue(form, "when");
+        var workGroup = form.querySelector("[data-quote-work]");
+        var whenGroup = form.querySelector("[data-quote-when]");
         need(name.length > 0, "name", "Enter your name.");
         need(phone.replace(/\D/g, "").length >= 8, "phone", "Enter a phone number.");
         need(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), "email", "Enter an email address.");
         need(suburb.length > 0, "suburb", "Enter a suburb or address.");
-        need(typeEl && typeEl.value, "work", "Choose a type of work.");
         need(details.length > 0, "details", "Add a short description.");
-        need(whenEl && whenEl.value, "when", "Choose a preferred time to talk.");
+        if (workGroup) {
+          workGroup.classList.toggle("is-invalid", !workVal);
+          workGroup.setAttribute("aria-invalid", workVal ? "false" : "true");
+        }
+        if (whenGroup) {
+          whenGroup.classList.toggle("is-invalid", !whenVal);
+          whenGroup.setAttribute("aria-invalid", whenVal ? "false" : "true");
+        }
+        if (!workVal) msgs.push("Choose a type of work.");
+        if (!whenVal) msgs.push("Choose a preferred time to talk.");
       } else if (kind === "book") {
         var bphone = fieldValue(form, "bphone");
         var dayVal = fieldValue(form, "day");

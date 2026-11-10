@@ -25,7 +25,7 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="site">
     <div class="wrap">
-      <a class="logo" href="index.html"><img src="assets/logo.svg" width="207" height="44" alt="Mostly Air"></a>
+      <a class="logo" href="index.html"><img src="assets/logo.svg" width="188" height="44" alt="Mostly Air"></a>
       <nav class="primary" aria-label="Site">
         <a href="work.html">Work</a>
         <a href="about.html">About</a>
@@ -67,27 +67,27 @@
             <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
             <label>Email <input type="email" name="email" autocomplete="email" required></label>
             <label>Suburb or address <input type="text" name="suburb" autocomplete="address-level2" required></label>
-            <label class="full">Type of work
-              <select name="work" required>
-                <option value="">Choose…</option>
-                <option>Split system install</option>
-                <option>Ducted system install</option>
-                <option>Sales</option>
-                <option>Repairs</option>
-                <option>Maintenance</option>
-                <option>Other</option>
-              </select>
-            </label>
+            <div class="field-block full">
+              <p class="field-label" id="quote-work-label">Type of work</p>
+              <div class="chip-pills" role="radiogroup" aria-labelledby="quote-work-label" data-quote-work>
+                <label class="chip"><input type="radio" name="work" value="Split system install"><span>Split system install</span></label>
+                <label class="chip"><input type="radio" name="work" value="Ducted system install"><span>Ducted system install</span></label>
+                <label class="chip"><input type="radio" name="work" value="Sales"><span>Sales</span></label>
+                <label class="chip"><input type="radio" name="work" value="Repairs"><span>Repairs</span></label>
+                <label class="chip"><input type="radio" name="work" value="Maintenance"><span>Maintenance</span></label>
+                <label class="chip"><input type="radio" name="work" value="Other"><span>Other</span></label>
+              </div>
+            </div>
             <label class="full">A short description <textarea name="details" required></textarea></label>
-            <label>Preferred time to talk
-              <select name="when" required>
-                <option value="">Choose…</option>
-                <option>Morning</option>
-                <option>Afternoon</option>
-                <option>Either</option>
-              </select>
-            </label>
-            <div class="submit"><button class="btn btn-navy" type="submit">Request a quote</button></div>
+            <div class="field-block full">
+              <p class="field-label" id="quote-when-label">Preferred time to talk</p>
+              <div class="chip-pills" role="radiogroup" aria-labelledby="quote-when-label" data-quote-when>
+                <label class="chip"><input type="radio" name="when" value="Morning"><span>Morning</span></label>
+                <label class="chip"><input type="radio" name="when" value="Afternoon"><span>Afternoon</span></label>
+                <label class="chip"><input type="radio" name="when" value="Either"><span>Either</span></label>
+              </div>
+            </div>
+            <button class="btn btn-cyan submit btn-full" type="submit">Request a quote</button>
           </form>
           <div class="thanks" tabindex="-1" hidden>
             <h2 class="thanks-title">Thanks. I’ll call you back to talk through the job.</h2>
@@ -143,7 +143,7 @@
   <footer class="site">
     <div class="wrap">
       <div>
-        <a class="logo" href="index.html"><img src="assets/logo.svg" width="169" height="36" alt="Mostly Air"></a>
+        <a class="logo" href="index.html"><img src="assets/logo.svg" width="154" height="36" alt="Mostly Air"></a>
         126 Bald Hills Road, Blakiston SA<br>
         <a href="tel:+61411135918">0411 135 918</a> · <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a>
         <nav aria-label="Footer">
