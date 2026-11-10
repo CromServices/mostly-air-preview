@@ -204,6 +204,142 @@
     });
   }
 
+  function initLightbox() {
+    var items = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox]"));
+    var box = document.querySelector(".lightbox");
+    if (!items.length || !box) return;
+
+    var img = box.querySelector(".lb-img");
+    var caption = box.querySelector(".lb-caption");
+    var counter = box.querySelector(".lb-counter");
+    var btnClose = box.querySelector(".lb-close");
+    var btnPrev = box.querySelector(".lb-prev");
+    var btnNext = box.querySelector(".lb-next");
+    var index = 0;
+    var lastFocus = null;
+    var startX = 0;
+    var startY = 0;
+    var swiping = false;
+
+    function controls() {
+      return [btnClose, btnPrev, btnNext];
+    }
+
+    function show(i) {
+      index = (i + items.length) % items.length;
+      var link = items[index];
+      var src = link.getAttribute("href");
+      var text = link.getAttribute("data-caption") || "";
+      var thumb = link.querySelector("img");
+      img.src = src;
+      img.alt = (thumb && thumb.getAttribute("alt")) || text;
+      caption.textContent = text;
+      counter.textContent = index + 1 + " / " + items.length;
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      show(i);
+      box.hidden = false;
+      document.documentElement.classList.add("lb-open");
+      document.body.classList.add("lb-open");
+      btnClose.focus();
+    }
+
+    function close() {
+      box.hidden = true;
+      img.removeAttribute("src");
+      document.documentElement.classList.remove("lb-open");
+      document.body.classList.remove("lb-open");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    items.forEach(function (link, i) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        open(i);
+      });
+    });
+
+    btnClose.addEventListener("click", function (e) {
+      e.stopPropagation();
+      close();
+    });
+    btnPrev.addEventListener("click", function (e) {
+      e.stopPropagation();
+      show(index - 1);
+    });
+    btnNext.addEventListener("click", function (e) {
+      e.stopPropagation();
+      show(index + 1);
+    });
+
+    box.addEventListener("click", function (e) {
+      if (e.target === box) close();
+    });
+    img.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (box.hidden) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        close();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        show(index - 1);
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        show(index + 1);
+        return;
+      }
+      if (e.key === "Tab") {
+        var els = controls();
+        var first = els[0];
+        var last = els[els.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    document.addEventListener("focusin", function (e) {
+      if (box.hidden || box.contains(e.target)) return;
+      btnClose.focus();
+    });
+
+    box.addEventListener("touchstart", function (e) {
+      if (!e.changedTouches.length) return;
+      swiping = true;
+      startX = e.changedTouches[0].clientX;
+      startY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    box.addEventListener("touchend", function (e) {
+      if (!swiping || !e.changedTouches.length) return;
+      swiping = false;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) < 40 && Math.abs(dy) < 40) return;
+      if (Math.abs(dy) > Math.abs(dx) && dy > 60) {
+        close();
+      } else if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) show(index + 1);
+        else show(index - 1);
+      }
+    });
+  }
+
   initTheme();
   document.querySelectorAll("form[data-form]").forEach(initForm);
+  initLightbox();
 })();
