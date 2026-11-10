@@ -10,16 +10,18 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <p class="preview-bar"><a href="https://cromservices.com.au">Spec preview by Crom Services</a></p>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="site-chrome">
+  <p class="preview-bar"><a href="https://cromservices.com.au">Spec preview by Crom Services</a></p>
   <header>
     <div class="brand-bar">
       <div class="wrap">
         <a class="wordmark" href="index.html">Mostly Air<span>Air conditioning</span></a>
         <a class="phone-lg" href="tel:+61411135918">0411 135 918</a>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       </div>
     </div>
-    <nav class="bar" aria-label="Primary">
+    <nav class="bar" id="site-nav" aria-label="Primary">
       <div class="wrap">
         <div class="primary">
           <a href="work.html">Work</a>
@@ -34,6 +36,7 @@
       <div class="wrap">Air conditioning &amp; refrigeration – Adelaide Hills, South Australia</div>
     </div>
   </header>
+  </div>
 
   <main id="main" class="page about-page">
     <div class="wrap hero-grid">
@@ -81,5 +84,6 @@
     <a class="btn btn-cyan" href="tel:+61411135918">Call 0411 135 918</a>
     <a class="btn btn-ghost-light" href="quote.html">Request a quote</a>
   </div>
+  <script src="js/site.js" defer></script>
 </body>
 </html>

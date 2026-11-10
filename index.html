@@ -12,16 +12,18 @@
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-  <p class="preview-bar"><a href="https://cromservices.com.au">Spec preview by Crom Services</a></p>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="site-chrome">
+  <p class="preview-bar"><a href="https://cromservices.com.au">Spec preview by Crom Services</a></p>
   <header>
     <div class="brand-bar">
       <div class="wrap">
         <a class="wordmark" href="index.html">Mostly Air<span>Air conditioning</span></a>
         <a class="phone-lg" href="tel:+61411135918">0411 135 918</a>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       </div>
     </div>
-    <nav class="bar" aria-label="Primary">
+    <nav class="bar" id="site-nav" aria-label="Primary">
       <div class="wrap">
         <div class="primary">
           <a href="work.html">Work</a>
@@ -36,6 +38,7 @@
       <div class="wrap">Air conditioning &amp; refrigeration – Adelaide Hills, South Australia</div>
     </div>
   </header>
+  </div>
 
   <main id="main">
     <section class="hero">
@@ -97,13 +100,15 @@
           <p style="margin-top:12px"><strong>Email</strong><br><a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
         </div>
         <div>
-          <form class="quote-form">
-            <label>Name<input type="text" name="name" autocomplete="name"></label>
-            <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
-            <label>Email<input type="email" name="email" autocomplete="email"></label>
-            <label>Suburb or address<input type="text" name="suburb"></label>
+          <form class="quote-form" novalidate>
+            <p class="form-errors" role="alert" hidden></p>
+            <label>Name<input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+            <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            <label>Suburb or address<input type="text" name="suburb" autocomplete="address-level2" required></label>
             <label class="full">Type of work
-              <select name="type">
+              <select name="type" required>
+                <option value="">Choose…</option>
                 <option>Split system install</option>
                 <option>Ducted system install</option>
                 <option>Sales</option>
@@ -112,13 +117,19 @@
                 <option>Other</option>
               </select>
             </label>
-            <label class="full">A short description<textarea name="details"></textarea></label>
-            <label class="full">Preferred time to talk<input type="text" name="when"></label>
+            <label class="full">A short description<textarea name="details" required></textarea></label>
+            <label class="full">Preferred time to talk<input type="text" name="when" required></label>
             <button class="btn btn-cyan submit" type="submit">Request a quote</button>
           </form>
-          <div class="thanks" role="status">
-            <h3>Thanks — this preview form does not send.</h3>
-            <p>On the live site, Andrew would call back on this enquiry. For now, use 0411 135 918 or andrew@mostlyair.com.au.</p>
+          <div class="thanks" tabindex="-1" aria-live="polite" hidden>
+            <h2 class="thanks-title">Thanks, your request is in</h2>
+            <h3>What happens next</h3>
+            <ol>
+              <li>We get your request straight away by email and SMS.</li>
+              <li>We call or text you back, usually same business day.</li>
+              <li>You get a written quote, no obligation.</li>
+            </ol>
+            <p class="form-note">Demo only: this preview does not send.</p>
           </div>
         </div>
       </div>
@@ -176,15 +187,6 @@
     <a class="btn btn-cyan" href="tel:+61411135918">Call 0411 135 918</a>
     <a class="btn btn-ghost-light" href="#quote">Request a quote</a>
   </div>
-  <script>
-    document.querySelectorAll("form.quote-form").forEach(function (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        form.hidden = true;
-        var thanks = form.parentNode.querySelector(".thanks");
-        if (thanks) thanks.classList.add("is-visible");
-      });
-    });
-  </script>
+  <script src="js/site.js" defer></script>
 </body>
 </html>
