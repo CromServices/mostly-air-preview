@@ -11,8 +11,8 @@
       "defaultPalette": false,
       "defaultGradients": false,
       "palette": [
-        { "slug": "cyan", "color": "#05ABE0", "name": "Brand cyan" },
-        { "slug": "cyan-mid", "color": "#53CBF1", "name": "Cyan mid" },
+        { "slug": "cyan", "color": "#067096", "name": "Brand cyan" },
+        { "slug": "cyan-mid", "color": "#067CA4", "name": "Cyan mid" },
         { "slug": "cyan-light", "color": "#87E0FD", "name": "Cyan light" },
         { "slug": "navy", "color": "#07364B", "name": "Navy" },
         { "slug": "navy-mid", "color": "#0E6992", "name": "Navy mid" },
@@ -21,14 +21,15 @@
         { "slug": "ice", "color": "#F4F8FB", "name": "Page ice" },
         { "slug": "paper", "color": "#FFFFFF", "name": "Paper" },
         { "slug": "muted", "color": "#4A6570", "name": "Muted" },
-        { "slug": "line", "color": "#C9DCE4", "name": "Line" },
+        { "slug": "line", "color": "#6A8FA0", "name": "Line" },
+        { "slug": "dash", "color": "#5A7F90", "name": "Dash" },
         { "slug": "gap", "color": "#E9F1F6", "name": "Gap" }
       ],
       "gradients": [
         {
           "slug": "brand-header",
           "name": "Brand header",
-          "gradient": "linear-gradient(180deg, #05ABE0 0%, #53CBF1 66%, #87E0FD 100%)"
+          "gradient": "linear-gradient(180deg, #057096 0%, #06769D 55%, #067CA4 100%)"
         }
       ]
     },
