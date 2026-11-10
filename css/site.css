@@ -129,17 +129,38 @@ nav.primary a[aria-current="page"] { color: var(--cyan-light); }
 .header-actions { display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
 
 .theme-toggle {
-  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   min-width: 44px;
-  padding: 0 12px;
+  min-height: 44px;
+  padding: 0;
+  margin-left: 4px;
   background: transparent;
-  border: 1.5px solid var(--toggle-border);
+  border: 0;
   color: #fff;
-  font: inherit;
-  font-weight: 700;
-  font-size: 14px;
   cursor: pointer;
-  border-radius: 2px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.theme-toggle-face {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--toggle-border);
+}
+.theme-toggle svg { display: block; }
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--cyan-light);
+  outline-offset: 2px;
 }
 
 .hero {
@@ -361,6 +382,109 @@ form {
   gap: 14px 16px;
 }
 .book form { border-color: transparent; }
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  max-width: 100%;
+}
+.book-grid > * { min-width: 0; }
+.chip-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 8px;
+  scrollbar-width: thin;
+  max-width: 100%;
+}
+.chip-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+form.book-form label.chip,
+.chip {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--navy-ink);
+  background: var(--paper);
+  color: var(--navy-ink);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.chip:has(input:checked) {
+  background: var(--navy-ink);
+  color: #fff;
+  border-color: var(--navy-ink);
+}
+.chip.is-weekend,
+.chip:has(input:disabled) {
+  background: #d7e0e4;
+  color: #7a8d96;
+  border-color: #c3d0d6;
+  border-style: dashed;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.chip:has(input:disabled) input { cursor: not-allowed; }
+.chip:focus-within {
+  outline: 2px solid var(--navy-ink);
+  outline-offset: 2px;
+}
+.chip-scroll.is-invalid,
+.chip-pills.is-invalid {
+  outline: 2px solid #8b1e1e;
+  outline-offset: 2px;
+}
+.book-summary {
+  min-height: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy-ink);
+}
+.book-form .book-submit {
+  width: 100%;
+  justify-self: stretch;
+}
+[data-theme="dark"] .chip {
+  background: var(--navy);
+  color: #fff;
+  border-color: rgba(135, 224, 253, 0.35);
+}
+[data-theme="dark"] .chip:has(input:checked) {
+  background: var(--cyan);
+  color: var(--navy-ink);
+  border-color: var(--cyan);
+}
+[data-theme="dark"] .chip.is-weekend,
+[data-theme="dark"] .chip:has(input:disabled) {
+  background: #0a3142;
+  color: #6d8792;
+  border-color: #1e4a5c;
+}
+[data-theme="dark"] .chip:focus-within {
+  outline-color: var(--cyan-light);
+}
+[data-theme="dark"] .book-summary { color: var(--navy-ink); }
 form label {
   display: flex;
   flex-direction: column;
@@ -470,7 +594,7 @@ footer.site nav a:hover { color: #fff; }
   .bento a.wide { grid-column: span 2; }
   header.site .wrap { min-height: 64px; flex-wrap: wrap; row-gap: 0; }
   .logo img { height: 36px; }
-  nav.primary {
+    nav.primary {
     display: flex;
     width: 100%;
     order: 3;
@@ -478,6 +602,13 @@ footer.site nav a:hover { color: #fff; }
     gap: 4px 16px;
     overflow-x: auto;
     padding-bottom: 4px;
+  }
+  nav.primary .theme-toggle {
+    position: sticky;
+    right: 0;
+    margin-left: auto;
+    background: var(--navy-ink);
+    z-index: 1;
   }
   .hero { min-height: 86vh; }
   .hero-copy { padding: 48px 0 96px; margin-left: 20px; }

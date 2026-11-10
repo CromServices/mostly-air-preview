@@ -32,9 +32,14 @@
         <a href="quote.html" aria-current="page">Quote</a>
         <a href="#book">Book</a>
         <a href="contact.html">Contact</a>
+        <button type="button" class="theme-toggle" aria-label="Switch light/dark">
+          <span class="theme-toggle-face" aria-hidden="true">
+            <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4 7 7 0 0 0 20 14.5z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+          </span>
+        </button>
       </nav>
       <div class="header-actions">
-        <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">Dark</button>
         <a class="btn btn-ghost" href="tel:+61411135918">Call 0411 135 918</a>
         <a class="btn btn-cyan" href="#quote">Request a quote</a>
       </div>
@@ -50,7 +55,7 @@
           <ol class="steps">
             <li data-n="1">Fill in your name, phone, email, suburb and a short description of the work.</li>
             <li data-n="2">Hit “Request a quote”.</li>
-            <li data-n="3">You’ll stay on this page and see a short thank-you.</li>
+            <li data-n="3">I read every request myself.</li>
             <li data-n="4">I’ll call you back to talk through the job and confirm a time.</li>
           </ol>
           <p class="help" style="margin-top:20px">Phone <a href="tel:+61411135918">0411 135 918</a><br>Email <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
@@ -85,7 +90,7 @@
             <div class="submit"><button class="btn btn-navy" type="submit">Request a quote</button></div>
           </form>
           <div class="thanks" tabindex="-1" hidden>
-            <h2 class="thanks-title">Thanks. I’ll call you back.</h2>
+            <h2 class="thanks-title">Thanks. I’ll call you back to talk through the job.</h2>
             <p>You can also ring me on <a href="tel:+61411135918">0411 135 918</a> or email <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a>.</p>
           </div>
         </div>
@@ -100,29 +105,34 @@
           <ol class="steps">
             <li data-n="1">Choose a day and a time window, and leave your name and phone number.</li>
             <li data-n="2">Hit “Book a visit”.</li>
-            <li data-n="3">You’ll stay on this page and see a short thank-you.</li>
+            <li data-n="3">I’ll see your request and get back to you.</li>
             <li data-n="4">I’ll call you back. If that time doesn’t work, we’ll pick another.</li>
           </ol>
         </div>
         <div>
           <form class="book-form" data-form="book" novalidate>
             <p class="form-errors" role="alert" hidden></p>
-            <label>Name <input type="text" name="bname" autocomplete="name" required></label>
-            <label>Phone <input type="tel" name="bphone" autocomplete="tel" required></label>
-            <label>Preferred day <input type="text" name="day" required></label>
-            <label>Time window
-              <select name="window" required>
-                <option value="">Choose…</option>
-                <option>Morning</option>
-                <option>Afternoon</option>
-                <option>Either</option>
-              </select>
-            </label>
+            <div class="chip-scroll" role="radiogroup" aria-label="Preferred day" data-days></div>
+            <div class="chip-pills" role="radiogroup" aria-label="Time of day" data-times>
+              <label class="chip"><input type="radio" name="window" value="Morning"><span>Morning</span></label>
+              <label class="chip"><input type="radio" name="window" value="Midday"><span>Midday</span></label>
+              <label class="chip"><input type="radio" name="window" value="Afternoon"><span>Afternoon</span></label>
+            </div>
+            <div class="chip-pills" role="radiogroup" aria-label="Type of work">
+              <label class="chip"><input type="radio" name="job" value="Split system install"><span>Split system install</span></label>
+              <label class="chip"><input type="radio" name="job" value="Ducted system install"><span>Ducted system install</span></label>
+              <label class="chip"><input type="radio" name="job" value="Sales"><span>Sales</span></label>
+              <label class="chip"><input type="radio" name="job" value="Repairs"><span>Repairs</span></label>
+              <label class="chip"><input type="radio" name="job" value="Maintenance"><span>Maintenance</span></label>
+            </div>
+            <label class="full">Name <input type="text" name="bname" autocomplete="name"></label>
+            <label class="full">Phone <input type="tel" name="bphone" autocomplete="tel" required></label>
             <label class="full">Anything I should know <textarea name="notes"></textarea></label>
-            <div class="submit"><button class="btn btn-navy" type="submit">Book a visit</button></div>
+            <p class="book-summary" aria-live="polite"></p>
+            <button class="btn btn-cyan book-submit" type="submit">Book a visit</button>
           </form>
           <div class="thanks" tabindex="-1" hidden>
-            <h2 class="thanks-title">Thanks. I’ll call you back.</h2>
+            <h2 class="thanks-title">Thanks. I’ll be in touch to confirm the time.</h2>
             <p>You can also ring me on <a href="tel:+61411135918">0411 135 918</a>.</p>
           </div>
         </div>

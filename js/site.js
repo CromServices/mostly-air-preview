@@ -2,21 +2,19 @@
   "use strict";
 
   var THEME_KEY = "mostly-air-theme";
+  var DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  var MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  function applyTheme(theme) {
+  function applyTheme(theme, persist) {
     var next = theme === "dark" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem(THEME_KEY, next);
-    } catch (e) {}
+    if (persist) {
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch (e) {}
+    }
     document.querySelectorAll(".theme-toggle").forEach(function (btn) {
-      var isDark = next === "dark";
-      btn.setAttribute("aria-pressed", isDark ? "true" : "false");
-      btn.textContent = isDark ? "Light" : "Dark";
-      btn.setAttribute(
-        "aria-label",
-        isDark ? "Switch to light theme" : "Switch to dark theme"
-      );
+      btn.setAttribute("aria-pressed", next === "dark" ? "true" : "false");
     });
   }
 
@@ -26,23 +24,30 @@
       saved = localStorage.getItem(THEME_KEY);
     } catch (e) {}
     if (saved === "dark" || saved === "light") {
-      applyTheme(saved);
+      applyTheme(saved, false);
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      applyTheme("dark");
+      applyTheme("dark", false);
     } else {
-      applyTheme("light");
+      applyTheme("light", false);
     }
     document.querySelectorAll(".theme-toggle").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var current = document.documentElement.getAttribute("data-theme");
-        applyTheme(current === "dark" ? "light" : "dark");
+        applyTheme(current === "dark" ? "light" : "dark", true);
       });
     });
   }
 
   function fieldValue(form, name) {
     var el = form.elements[name];
-    return el ? String(el.value || "").trim() : "";
+    if (!el) return "";
+    if (el.length && el[0] && el[0].type === "radio") {
+      for (var i = 0; i < el.length; i++) {
+        if (el[i].checked && !el[i].disabled) return String(el[i].value || "").trim();
+      }
+      return "";
+    }
+    return String(el.value || "").trim();
   }
 
   function setInvalid(el, on) {
@@ -51,11 +56,81 @@
     el.setAttribute("aria-invalid", on ? "true" : "false");
   }
 
+  function checkedRadio(form, name) {
+    var el = form.elements[name];
+    if (!el) return null;
+    if (el.length) {
+      for (var i = 0; i < el.length; i++) {
+        if (el[i].checked && !el[i].disabled) return el[i];
+      }
+      return null;
+    }
+    return el.checked && !el.disabled ? el : null;
+  }
+
+  function formatDay(date) {
+    return DAY_NAMES[date.getDay()] + " " + date.getDate() + " " + MONTH_NAMES[date.getMonth()];
+  }
+
+  function isoDay(date) {
+    var m = date.getMonth() + 1;
+    var d = date.getDate();
+    return date.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (d < 10 ? "0" : "") + d;
+  }
+
+  function updateBookSummary(form) {
+    var line = form.querySelector(".book-summary");
+    if (!line) return;
+    var dayEl = checkedRadio(form, "day");
+    var timeEl = checkedRadio(form, "window");
+    var day = dayEl ? dayEl.getAttribute("data-label") || dayEl.value : "";
+    var time = timeEl ? timeEl.value : "";
+    if (day && time) line.textContent = day + ", " + time;
+    else if (day) line.textContent = day;
+    else if (time) line.textContent = time;
+    else line.textContent = "";
+  }
+
+  function fillDays(group) {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    group.innerHTML = "";
+    for (var i = 0; i < 14; i++) {
+      var date = new Date(today);
+      date.setDate(today.getDate() + i);
+      var weekend = date.getDay() === 0 || date.getDay() === 6;
+      var label = formatDay(date);
+      var wrap = document.createElement("label");
+      wrap.className = "chip" + (weekend ? " is-weekend" : "");
+      var input = document.createElement("input");
+      input.type = "radio";
+      input.name = "day";
+      input.value = isoDay(date);
+      input.setAttribute("data-label", label);
+      if (weekend) input.disabled = true;
+      var span = document.createElement("span");
+      span.textContent = label;
+      wrap.appendChild(input);
+      wrap.appendChild(span);
+      group.appendChild(wrap);
+    }
+  }
+
+  function initBookWidget(form) {
+    var days = form.querySelector("[data-days]");
+    if (days) fillDays(days);
+    form.addEventListener("change", function () {
+      updateBookSummary(form);
+    });
+    updateBookSummary(form);
+  }
+
   function initForm(form) {
     var errors = form.querySelector(".form-errors");
     var thanks = form.parentNode.querySelector(".thanks");
-    var title = thanks ? thanks.querySelector(".thanks-title") : null;
     var kind = form.getAttribute("data-form");
+
+    if (kind === "book") initBookWidget(form);
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -83,14 +158,24 @@
         need(details.length > 0, "details", "Add a short description.");
         need(whenEl && whenEl.value, "when", "Choose a preferred time to talk.");
       } else if (kind === "book") {
-        var bname = fieldValue(form, "bname");
         var bphone = fieldValue(form, "bphone");
-        var day = fieldValue(form, "day");
-        var windowEl = form.elements.window;
-        need(bname.length > 0, "bname", "Enter your name.");
-        need(bphone.replace(/\D/g, "").length >= 8, "bphone", "Enter a phone number.");
-        need(day.length > 0, "day", "Enter a preferred day.");
-        need(windowEl && windowEl.value, "window", "Choose a time window.");
+        var dayVal = fieldValue(form, "day");
+        var timeVal = fieldValue(form, "window");
+        var dayGroup = form.querySelector("[data-days]");
+        var timeGroup = form.querySelector("[data-times]");
+        var phoneEl = form.elements.bphone;
+        setInvalid(phoneEl, bphone.replace(/\D/g, "").length < 8);
+        if (dayGroup) {
+          dayGroup.classList.toggle("is-invalid", !dayVal);
+          dayGroup.setAttribute("aria-invalid", dayVal ? "false" : "true");
+        }
+        if (timeGroup) {
+          timeGroup.classList.toggle("is-invalid", !timeVal);
+          timeGroup.setAttribute("aria-invalid", timeVal ? "false" : "true");
+        }
+        if (!dayVal) msgs.push("Choose a day.");
+        if (!timeVal) msgs.push("Choose a time.");
+        if (bphone.replace(/\D/g, "").length < 8) msgs.push("Enter a phone number.");
       }
 
       if (msgs.length) {
@@ -99,7 +184,10 @@
           errors.textContent = msgs.join(" ");
         }
         var first = form.querySelector(".is-invalid");
-        if (first) first.focus();
+        if (first) {
+          var focusEl = first.matches("input, select, textarea") ? first : first.querySelector("input:not(:disabled), select, textarea, button");
+          if (focusEl) focusEl.focus();
+        }
         return;
       }
 
@@ -109,9 +197,7 @@
       }
 
       form.hidden = true;
-      if (thanks && title) {
-        var who = kind === "book" ? fieldValue(form, "bname") : fieldValue(form, "name");
-        title.textContent = who ? "Thanks " + who + ". I’ll call you back." : "Thanks. I’ll call you back.";
+      if (thanks) {
         thanks.hidden = false;
         thanks.focus();
       }
