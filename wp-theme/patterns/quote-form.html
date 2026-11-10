@@ -1,0 +1,43 @@
+<!--
+Title: Quote form
+Slug: mostly-air/quote-form
+Categories: featured
+Description: Demo quote fields. Preview must not POST.
+-->
+<!-- wp:group {"tagName":"section","align":"wide"} -->
+<section class="wp-block-group alignwide">
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">Request a quote</h2>
+  <!-- /wp:heading -->
+  <!-- wp:paragraph -->
+  <p>Tell me a little about the job and I’ll call you back. There is no online price — I’ll confirm that once we’ve talked it through.</p>
+  <!-- /wp:paragraph -->
+  <!-- wp:paragraph -->
+  <p>This preview form does not send.</p>
+  <!-- /wp:paragraph -->
+  <!-- wp:paragraph -->
+  <p>Phone: <a href="tel:+61411135918">0411 135 918</a><br>Email: <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
+  <!-- /wp:paragraph -->
+  <!-- wp:html -->
+  <form class="quote-form">
+    <label>Name<input type="text" name="name" autocomplete="name"></label>
+    <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
+    <label>Email<input type="email" name="email" autocomplete="email"></label>
+    <label>Suburb or address<input type="text" name="suburb"></label>
+    <label>Type of work
+      <select name="type">
+        <option>Split system install</option>
+        <option>Ducted system install</option>
+        <option>Sales</option>
+        <option>Repairs</option>
+        <option>Maintenance</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>A short description<textarea name="details"></textarea></label>
+    <label>Preferred time to talk<input type="text" name="when"></label>
+    <button type="submit">Request a quote</button>
+  </form>
+  <!-- /wp:html -->
+</section>
+<!-- /wp:group -->
