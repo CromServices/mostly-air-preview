@@ -4,87 +4,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Request a quote | Mostly Air</title>
-  <meta name="description" content="Air conditioning &amp; refrigeration – Adelaide Hills, South Australia">
+  <meta name="description" content="Split and ducted installs, sales, repairs and maintenance in the Adelaide Hills. Call Andrew Moseley on 0411 135 918.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://cromservices.github.io/mostly-air-preview/quote.html">
   <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("mostly-air-theme");
+        if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <div class="site-chrome">
-  <p class="preview-bar"><a href="https://cromservices.com.au">Spec preview by Crom Services</a></p>
-  <header>
-    <div class="brand-bar">
-      <div class="wrap">
-        <a class="wordmark" href="index.html">Mostly Air<span>Air conditioning</span></a>
-        <a class="phone-lg" href="tel:+61411135918">0411 135 918</a>
-        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <header class="site">
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" width="207" height="44" alt="Mostly Air"></a>
+      <nav class="primary" aria-label="Site">
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="quote.html" aria-current="page">Quote</a>
+        <a href="#book">Book</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">Dark</button>
+        <a class="btn btn-ghost" href="tel:+61411135918">Call 0411 135 918</a>
+        <a class="btn btn-cyan" href="#quote">Request a quote</a>
       </div>
-    </div>
-    <nav class="bar" id="site-nav" aria-label="Primary">
-      <div class="wrap">
-        <div class="primary">
-          <a href="work.html">Work</a>
-          <a href="about.html">About</a>
-          <a href="quote.html" aria-current="page">Quote</a>
-          <a href="contact.html">Contact</a>
-          <a class="btn btn-navy" href="tel:+61411135918">Call 0411 135 918</a>
-        </div>
-      </div>
-    </nav>
-    <div class="tagline">
-      <div class="wrap">Air conditioning &amp; refrigeration – Adelaide Hills, South Australia</div>
     </div>
   </header>
-  </div>
 
-  <main id="main" class="quote">
-    <div class="wrap quote-grid">
-      <div>
-        <h1>Request a quote</h1>
-        <p class="help">Andrew will call back to talk through the job.</p>
-        <p><strong>Phone</strong><br><a href="tel:+61411135918">0411 135 918</a></p>
-        <p style="margin-top:12px"><strong>Email</strong><br><a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
-      </div>
-      <div>
-        <form class="quote-form" novalidate>
-          <p class="form-errors" role="alert" hidden></p>
-          <label>Name<input type="text" name="name" autocomplete="name" required></label>
-          <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
-          <label>Email<input type="email" name="email" autocomplete="email" required></label>
-          <label>Suburb or address<input type="text" name="suburb" autocomplete="address-level2" required></label>
-          <label class="full">Type of work
-            <select name="type" required>
-              <option value="">Choose…</option>
-              <option>Split system install</option>
-              <option>Ducted system install</option>
-              <option>Sales</option>
-              <option>Repairs</option>
-              <option>Maintenance</option>
-              <option>Other</option>
-            </select>
-          </label>
-          <label class="full">A short description<textarea name="details" required></textarea></label>
-          <label class="full">Preferred time to talk<input type="text" name="when" required></label>
-          <button class="btn btn-cyan submit" type="submit">Request a quote</button>
-        </form>
-        <div class="thanks" tabindex="-1" aria-live="polite" hidden>
-          <h2 class="thanks-title">Thanks, your request is in</h2>
-          <h3>What happens next</h3>
-          <ol>
-            <li>We get your request straight away by email and SMS.</li>
-            <li>We call or text you back, usually same business day.</li>
-            <li>You get a written quote, no obligation.</li>
+  <main id="main">
+    <section class="quote" id="quote">
+      <div class="wrap quote-grid">
+        <div>
+          <h1>Request a quote</h1>
+          <p class="help">Tell me a little about the job and I’ll call you back. There is no online price — I’ll confirm that once we’ve talked it through.</p>
+          <ol class="steps">
+            <li data-n="1">Fill in your name, phone, email, suburb and a short description of the work.</li>
+            <li data-n="2">Hit “Request a quote”.</li>
+            <li data-n="3">You’ll stay on this page and see a short thank-you.</li>
+            <li data-n="4">I’ll call you back to talk through the job and confirm a time.</li>
           </ol>
+          <p class="help" style="margin-top:20px">Phone <a href="tel:+61411135918">0411 135 918</a><br>Email <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
+        </div>
+        <div>
+          <form class="quote-form" data-form="quote" novalidate>
+            <p class="form-errors" role="alert" hidden></p>
+            <label>Name <input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
+            <label>Email <input type="email" name="email" autocomplete="email" required></label>
+            <label>Suburb or address <input type="text" name="suburb" autocomplete="address-level2" required></label>
+            <label class="full">Type of work
+              <select name="work" required>
+                <option value="">Choose…</option>
+                <option>Split system install</option>
+                <option>Ducted system install</option>
+                <option>Sales</option>
+                <option>Repairs</option>
+                <option>Maintenance</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="full">A short description <textarea name="details" required></textarea></label>
+            <label>Preferred time to talk
+              <select name="when" required>
+                <option value="">Choose…</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Either</option>
+              </select>
+            </label>
+            <div class="submit"><button class="btn btn-navy" type="submit">Request a quote</button></div>
+          </form>
+          <div class="thanks" tabindex="-1" hidden>
+            <h2 class="thanks-title">Thanks. I’ll call you back.</h2>
+            <p>You can also ring me on <a href="tel:+61411135918">0411 135 918</a> or email <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a>.</p>
           </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="book" id="book">
+      <div class="wrap book-grid">
+        <div>
+          <h2>Book a visit</h2>
+          <p class="help">Pick a day and a time window that suits you. This holds a visit or a call — it is not a confirmed job until I reply.</p>
+          <ol class="steps">
+            <li data-n="1">Choose a day and a time window, and leave your name and phone number.</li>
+            <li data-n="2">Hit “Book a visit”.</li>
+            <li data-n="3">You’ll stay on this page and see a short thank-you.</li>
+            <li data-n="4">I’ll call you back. If that time doesn’t work, we’ll pick another.</li>
+          </ol>
+        </div>
+        <div>
+          <form class="book-form" data-form="book" novalidate>
+            <p class="form-errors" role="alert" hidden></p>
+            <label>Name <input type="text" name="bname" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="bphone" autocomplete="tel" required></label>
+            <label>Preferred day <input type="text" name="day" required></label>
+            <label>Time window
+              <select name="window" required>
+                <option value="">Choose…</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Either</option>
+              </select>
+            </label>
+            <label class="full">Anything I should know <textarea name="notes"></textarea></label>
+            <div class="submit"><button class="btn btn-navy" type="submit">Book a visit</button></div>
+          </form>
+          <div class="thanks" tabindex="-1" hidden>
+            <h2 class="thanks-title">Thanks. I’ll call you back.</h2>
+            <p>You can also ring me on <a href="tel:+61411135918">0411 135 918</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site">
     <div class="wrap">
       <div>
-        <strong>Mostly Air</strong><br>
+        <a class="logo" href="index.html"><img src="assets/logo.svg" width="169" height="36" alt="Mostly Air"></a>
         126 Bald Hills Road, Blakiston SA<br>
         <a href="tel:+61411135918">0411 135 918</a> · <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a>
         <nav aria-label="Footer">
@@ -95,15 +144,12 @@
           <a href="contact.html">Contact</a>
         </nav>
       </div>
-      <div>
-        Air conditioning and refrigeration, Adelaide Hills<br>
-        © 2026 Mostly Air
-      </div>
+      <div>Air conditioning and refrigeration, Adelaide Hills.<br>© 2026 Mostly Air</div>
     </div>
   </footer>
   <div class="sticky-call">
-    <a class="btn btn-cyan" href="tel:+61411135918">Call 0411 135 918</a>
-    <a class="btn btn-ghost-light" href="#main">Request a quote</a>
+    <a class="btn btn-ghost" href="tel:+61411135918">Call</a>
+    <a class="btn btn-cyan" href="#quote">Quote</a>
   </div>
   <script src="js/site.js" defer></script>
 </body>

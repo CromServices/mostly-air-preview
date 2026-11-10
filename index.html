@@ -4,85 +4,165 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Air conditioning &amp; refrigeration, Adelaide Hills | Mostly Air</title>
-  <meta name="description" content="Air conditioning &amp; refrigeration – Adelaide Hills, South Australia">
+  <meta name="description" content="Split and ducted installs, sales, repairs and maintenance in the Adelaide Hills. Call Andrew Moseley on 0411 135 918.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://cromservices.github.io/mostly-air-preview/">
   <link rel="preload" href="fonts/outfit-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/outfit-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("mostly-air-theme");
+        if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <div class="site-chrome">
-  <p class="preview-bar"><a href="https://cromservices.com.au">Spec preview by Crom Services</a></p>
-  <header>
-    <div class="brand-bar">
-      <div class="wrap">
-        <a class="wordmark" href="index.html">Mostly Air<span>Air conditioning</span></a>
-        <a class="phone-lg" href="tel:+61411135918">0411 135 918</a>
-        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <header class="site">
+    <div class="wrap">
+      <a class="logo" href="index.html"><img src="assets/logo.svg" width="207" height="44" alt="Mostly Air"></a>
+      <nav class="primary" aria-label="Site">
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="quote.html">Quote</a>
+        <a href="quote.html#book">Book</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">Dark</button>
+        <a class="btn btn-ghost" href="tel:+61411135918">Call 0411 135 918</a>
+        <a class="btn btn-cyan" href="#quote">Request a quote</a>
       </div>
-    </div>
-    <nav class="bar" id="site-nav" aria-label="Primary">
-      <div class="wrap">
-        <div class="primary">
-          <a href="work.html">Work</a>
-          <a href="about.html">About</a>
-          <a href="quote.html">Quote</a>
-          <a href="contact.html">Contact</a>
-          <a class="btn btn-navy" href="tel:+61411135918">Call 0411 135 918</a>
-        </div>
-      </div>
-    </nav>
-    <div class="tagline">
-      <div class="wrap">Air conditioning &amp; refrigeration – Adelaide Hills, South Australia</div>
     </div>
   </header>
-  </div>
 
   <main id="main">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="kicker">Andrew Moseley · In the trade since 1994</p>
-          <h1>Air conditioning and refrigeration for the Adelaide Hills.</h1>
-          <p class="lead">I’m a self-employed technician based in Blakiston. I install, repair and maintain split and ducted systems, from homes through to commercial and industrial work — and you only need the one call.</p>
-          <div class="hero-actions">
-            <a class="btn btn-cyan" href="#quote">Request a quote</a>
-            <a class="btn btn-ghost" href="tel:+61411135918">Call 0411 135 918</a>
-          </div>
+    <section class="hero" id="top">
+      <picture class="hero-photo">
+        <source type="image/webp" srcset="assets/van-hero-800.webp 800w, assets/van-hero-1440.webp 1440w" sizes="100vw">
+        <img src="assets/van-hero-800.jpg" srcset="assets/van-hero-800.jpg 800w, assets/van-hero-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="The Mostly Air van, ready for work in the Adelaide Hills" fetchpriority="high">
+      </picture>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="kicker">Andrew Moseley · In the trade since 1994</p>
+        <h1>Air conditioning and refrigeration for the <em>Adelaide Hills</em>.</h1>
+        <p class="lead">I’m a self-employed technician based in Blakiston. I install, repair and maintain split and ducted systems, from homes through to commercial and industrial work — and you only need the one call.</p>
+        <div class="hero-actions">
+          <a class="btn btn-cyan" href="#quote">Request a quote</a>
+          <a class="btn btn-ghost" href="tel:+61411135918">Call 0411 135 918</a>
         </div>
-        <div class="photo-slot" role="img" aria-label="Photograph of the work van"></div>
+        <p class="proof">
+          <span>Since 1994</span>
+          <span>A-Class electrician</span>
+          <span>Adelaide Hills</span>
+        </p>
       </div>
     </section>
 
-    <section class="services" id="work">
+    <section class="work" id="work">
       <div class="wrap">
         <h2>The work I do</h2>
-        <div class="svc-grid">
-          <a class="svc" href="work.html#split"><span>01</span><h3>Split system installs</h3></a>
-          <a class="svc" href="work.html#ducted"><span>02</span><h3>Ducted system installs</h3></a>
-          <a class="svc" href="work.html#sales"><span>03</span><h3>Sales</h3></a>
-          <a class="svc" href="work.html#repairs"><span>04</span><h3>Repairs</h3></a>
-          <a class="svc" href="work.html#maintenance"><span>05</span><h3>Maintenance</h3></a>
+        <div class="svc-list">
+          <article class="svc"><b>01</b><div><h3>Split system installs</h3><p>I have installed, repaired and maintained all types and makes of air conditioners, from homes through to commercial work.</p></div></article>
+          <article class="svc"><b>02</b><div><h3>Ducted system installs</h3><p>Ducted installs as part of a complete service, from the first quote through to commissioning.</p></div></article>
+          <article class="svc"><b>03</b><div><h3>Sales</h3><p>I use and recommend Daikin, and I will work with all types and makes.</p></div></article>
+          <article class="svc"><b>04</b><div><h3>Repairs</h3><p>I've repaired all types and makes of air conditioners since 1994, from homes through to commercial and industrial systems.</p></div></article>
+          <article class="svc"><b>05</b><div><h3>Maintenance</h3><p>I maintain all types and makes, domestic through to industrial and commercial, and offer full back-up service after every install.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="about" id="about">
       <div class="wrap about-grid">
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="assets/andrew-van-800.webp 800w, assets/andrew-van-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 480px">
+            <img src="assets/andrew-van-800.jpg" srcset="assets/andrew-van-800.jpg 800w, assets/andrew-van-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 480px" width="1200" height="900" alt="Beside the Mostly Air van" loading="lazy" decoding="async">
+          </picture>
+        </figure>
         <div>
-          <p class="kicker">About Andrew</p>
+          <p class="kicker">A bit about the work</p>
           <h2>One call, from the quote through to commissioning.</h2>
-          <p>I began work in this trade in 1994 and now work across air conditioning, from domestic through to industrial and commercial. I have installed, repaired and maintained all types and makes.</p>
-          <p>I have lived in the Adelaide Hills all my life, so I have a complete understanding of the local climate and its heating and cooling requirements.</p>
-          <p>I am a qualified A-Class electrician, so installations do not need an extra tradesman. I use and recommend Daikin, and I will work with all types and makes.</p>
-        </div>
-        <div>
-          <p>I approach the work with pride and honesty. A good quality job, priced fairly, should leave a satisfied customer — and, I hope, return work and word of mouth.</p>
+          <p>My name is Andrew Moseley. I am a self-employed air conditioning and refrigeration technician based in the Adelaide Hills, South Australia.</p>
+          <p>I began work in this trade in 1994 and now have extensive knowledge and experience in all areas of air conditioning, from domestic through to industrial and commercial. I have installed, repaired and maintained all types and makes of air conditioners. As I have lived in the Adelaide Hills all my life I have a complete understanding of the local climate and its heating and cooling requirements.</p>
+          <p>I am a qualified A-Class electrician, so installations do not need an extra tradesman. You will only need to make one phone call to receive a complete service, from the initial quotation through to the commissioning and full backup service.</p>
+          <p>I use and recommend Daikin, and I will work with all types and makes. I approach the work with pride and honesty. A good quality job, priced fairly, should leave a satisfied customer — and, I hope, return work and word of mouth.</p>
           <p>I consider myself a community-minded person, with past and present involvement in local sporting groups and clubs.</p>
-          <p><a class="btn btn-ghost-light" href="about.html">More about Andrew</a></p>
         </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="photos">
+      <div class="wrap">
+        <h2>Recent work</h2>
+        <p class="intro">Installs and servicing around the Adelaide Hills — split systems, ducted work and outdoor units.</p>
+        <div class="bento">
+          <a class="wide" href="#pic-ducted">
+            <picture>
+              <source type="image/webp" srcset="assets/job-ducted-living-800.webp 800w, assets/job-ducted-living-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 70vw">
+              <img src="assets/job-ducted-living-800.jpg" srcset="assets/job-ducted-living-800.jpg 800w, assets/job-ducted-living-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 70vw" width="1200" height="900" alt="A ducted system in a living area" loading="lazy" decoding="async">
+            </picture>
+            <span class="cap">A ducted system in a living area</span>
+          </a>
+          <a class="tall" href="#pic-roof">
+            <picture>
+              <source type="image/webp" srcset="assets/job-roof-duct-800.webp 800w, assets/job-roof-duct-1200.webp 1200w" sizes="(max-width: 900px) 50vw, 30vw">
+              <img src="assets/job-roof-duct-800.jpg" srcset="assets/job-roof-duct-800.jpg 800w, assets/job-roof-duct-1200.jpg 1200w" sizes="(max-width: 900px) 50vw, 30vw" width="1200" height="900" alt="Ducting in the roof space" loading="lazy" decoding="async">
+            </picture>
+            <span class="cap">Ducting in the roof space</span>
+          </a>
+          <a href="#pic-brick">
+            <picture>
+              <source type="image/webp" srcset="assets/job-daikin-brick-800.webp 800w, assets/job-daikin-brick-1200.webp 1200w" sizes="(max-width: 900px) 50vw, 30vw">
+              <img src="assets/job-daikin-brick-800.jpg" srcset="assets/job-daikin-brick-800.jpg 800w, assets/job-daikin-brick-1200.jpg 1200w" sizes="(max-width: 900px) 50vw, 30vw" width="1200" height="1200" alt="A Daikin outdoor unit beside a brick wall" loading="lazy" decoding="async">
+            </picture>
+            <span class="cap">A Daikin outdoor unit beside a brick wall</span>
+          </a>
+          <a href="#pic-new">
+            <picture>
+              <source type="image/webp" srcset="assets/job-daikin-new-800.webp 800w, assets/job-daikin-new-1200.webp 1200w" sizes="(max-width: 900px) 50vw, 30vw">
+              <img src="assets/job-daikin-new-800.jpg" srcset="assets/job-daikin-new-800.jpg 800w, assets/job-daikin-new-1200.jpg 1200w" sizes="(max-width: 900px) 50vw, 30vw" width="1200" height="1600" alt="A Daikin outdoor unit at a new house" loading="lazy" decoding="async">
+            </picture>
+            <span class="cap">A Daikin outdoor unit at a new house</span>
+          </a>
+          <a href="#pic-replace">
+            <picture>
+              <source type="image/webp" srcset="assets/job-daikin-replace-800.webp 800w, assets/job-daikin-replace-1200.webp 1200w" sizes="(max-width: 900px) 50vw, 30vw">
+              <img src="assets/job-daikin-replace-800.jpg" srcset="assets/job-daikin-replace-800.jpg 800w, assets/job-daikin-replace-1200.jpg 1200w" sizes="(max-width: 900px) 50vw, 30vw" width="1200" height="1600" alt="A Daikin outdoor unit on a paved terrace" loading="lazy" decoding="async">
+            </picture>
+            <span class="cap">A Daikin outdoor unit on a paved terrace</span>
+          </a>
+          <a class="wide" href="#pic-split">
+            <picture>
+              <source type="image/webp" srcset="assets/job-split-800.webp 800w, assets/job-split-1200.webp 1200w" sizes="(max-width: 900px) 50vw, 30vw">
+              <img src="assets/job-split-800.jpg" srcset="assets/job-split-800.jpg 800w, assets/job-split-1200.jpg 1200w" sizes="(max-width: 900px) 50vw, 30vw" width="1200" height="900" alt="A wall split system" loading="lazy" decoding="async">
+            </picture>
+            <span class="cap">A wall split system</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div id="pic-ducted" class="lb"><a class="lb-close" href="#photos">Close</a><img src="assets/job-ducted-living-1200.jpg" alt="A ducted system in a living area"></div>
+    <div id="pic-roof" class="lb"><a class="lb-close" href="#photos">Close</a><img src="assets/job-roof-duct-1200.jpg" alt="Ducting in the roof space"></div>
+    <div id="pic-brick" class="lb"><a class="lb-close" href="#photos">Close</a><img src="assets/job-daikin-brick-1200.jpg" alt="A Daikin outdoor unit beside a brick wall"></div>
+    <div id="pic-new" class="lb"><a class="lb-close" href="#photos">Close</a><img src="assets/job-daikin-new-1200.jpg" alt="A Daikin outdoor unit at a new house"></div>
+    <div id="pic-replace" class="lb"><a class="lb-close" href="#photos">Close</a><img src="assets/job-daikin-replace-1200.jpg" alt="A Daikin outdoor unit on a paved terrace"></div>
+    <div id="pic-split" class="lb"><a class="lb-close" href="#photos">Close</a><img src="assets/job-split-1200.jpg" alt="A wall split system"></div>
+
+    <section class="video">
+      <div class="wrap">
+        <figure class="video-slot">
+          <strong>Your video here</strong>
+          <span>A short look at a job, when I have one filmed.</span>
+        </figure>
       </div>
     </section>
 
@@ -91,18 +171,23 @@
         <div>
           <h2>Request a quote</h2>
           <p class="help">Tell me a little about the job and I’ll call you back. There is no online price — I’ll confirm that once we’ve talked it through.</p>
-          <p><strong>Phone</strong><br><a href="tel:+61411135918">0411 135 918</a></p>
-          <p style="margin-top:12px"><strong>Email</strong><br><a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
+          <ol class="steps">
+            <li data-n="1">Fill in your name, phone, email, suburb and a short description of the work.</li>
+            <li data-n="2">Hit “Request a quote”.</li>
+            <li data-n="3">You’ll stay on this page and see a short thank-you.</li>
+            <li data-n="4">I’ll call you back to talk through the job and confirm a time.</li>
+          </ol>
+          <p class="help" style="margin-top:20px">Phone <a href="tel:+61411135918">0411 135 918</a><br>Email <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
         </div>
         <div>
-          <form class="quote-form" novalidate>
+          <form class="quote-form" data-form="quote" novalidate>
             <p class="form-errors" role="alert" hidden></p>
-            <label>Name<input type="text" name="name" autocomplete="name" required></label>
-            <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
-            <label>Email<input type="email" name="email" autocomplete="email" required></label>
-            <label>Suburb or address<input type="text" name="suburb" autocomplete="address-level2" required></label>
+            <label>Name <input type="text" name="name" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
+            <label>Email <input type="email" name="email" autocomplete="email" required></label>
+            <label>Suburb or address <input type="text" name="suburb" autocomplete="address-level2" required></label>
             <label class="full">Type of work
-              <select name="type" required>
+              <select name="work" required>
                 <option value="">Choose…</option>
                 <option>Split system install</option>
                 <option>Ducted system install</option>
@@ -112,45 +197,101 @@
                 <option>Other</option>
               </select>
             </label>
-            <label class="full">A short description<textarea name="details" required></textarea></label>
-            <label class="full">Preferred time to talk<input type="text" name="when" required></label>
-            <button class="btn btn-cyan submit" type="submit">Request a quote</button>
+            <label class="full">A short description <textarea name="details" required></textarea></label>
+            <label>Preferred time to talk
+              <select name="when" required>
+                <option value="">Choose…</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Either</option>
+              </select>
+            </label>
+            <div class="submit"><button class="btn btn-navy" type="submit">Request a quote</button></div>
           </form>
-          <div class="thanks" tabindex="-1" aria-live="polite" hidden>
-            <h2 class="thanks-title">Thanks, your request is in</h2>
-            <h3>What happens next</h3>
-            <ol>
-              <li>We get your request straight away by email and SMS.</li>
-              <li>We call or text you back, usually same business day.</li>
-              <li>You get a written quote, no obligation.</li>
-            </ol>
+          <div class="thanks" tabindex="-1" hidden>
+            <h2 class="thanks-title">Thanks. I’ll call you back.</h2>
+            <p>You can also ring me on <a href="tel:+61411135918">0411 135 918</a> or email <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a>.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="wrap contact-grid">
-        <article>
-          <h3>Address</h3>
-          <p>126 Bald Hills Road<br>Blakiston SA</p>
-        </article>
-        <article>
-          <h3>Contact</h3>
-          <p><a href="tel:+61411135918">0411 135 918</a><br><a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
-        </article>
-        <div class="hours-gap">
-          <strong>Opening hours</strong>
+    <section class="book" id="book">
+      <div class="wrap book-grid">
+        <div>
+          <h2>Book a visit</h2>
+          <p class="help">Pick a day and a time window that suits you. This holds a visit or a call — it is not a confirmed job until I reply.</p>
+          <ol class="steps">
+            <li data-n="1">Choose a day and a time window, and leave your name and phone number.</li>
+            <li data-n="2">Hit “Book a visit”.</li>
+            <li data-n="3">You’ll stay on this page and see a short thank-you.</li>
+            <li data-n="4">I’ll call you back. If that time doesn’t work, we’ll pick another.</li>
+          </ol>
+        </div>
+        <div>
+          <form class="book-form" data-form="book" novalidate>
+            <p class="form-errors" role="alert" hidden></p>
+            <label>Name <input type="text" name="bname" autocomplete="name" required></label>
+            <label>Phone <input type="tel" name="bphone" autocomplete="tel" required></label>
+            <label>Preferred day <input type="text" name="day" required></label>
+            <label>Time window
+              <select name="window" required>
+                <option value="">Choose…</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Either</option>
+              </select>
+            </label>
+            <label class="full">Anything I should know <textarea name="notes"></textarea></label>
+            <div class="submit"><button class="btn btn-navy" type="submit">Book a visit</button></div>
+          </form>
+          <div class="thanks" tabindex="-1" hidden>
+            <h2 class="thanks-title">Thanks. I’ll call you back.</h2>
+            <p>You can also ring me on <a href="tel:+61411135918">0411 135 918</a>.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="reviews">
+    <section class="reviews" id="reviews">
       <div class="wrap">
         <h2>What locals say</h2>
-        <div class="reviews-gap"></div>
-        <h2>Google reviews</h2>
-        <div class="reviews-gap"></div>
+        <p class="rating">4.3 stars from 11 Google reviews</p>
+        <div class="quotes">
+          <blockquote>
+            <p>Absolutely outstanding.</p>
+            <footer>Shannon · 3 months ago</footer>
+          </blockquote>
+          <blockquote>
+            <p>Great communication, arrived on time and did a really neat job!</p>
+            <footer>Lynne · 2 years ago</footer>
+          </blockquote>
+          <blockquote>
+            <p>Fantastic service.</p>
+            <footer>Tarik · 3 years ago</footer>
+          </blockquote>
+        </div>
+        <p class="review-note">If I’ve already done a job for you, I’d be glad if you left a Google review.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div>
+            <h3>Address</h3>
+            <p>126 Bald Hills Road<br>Blakiston SA</p>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <p><a href="tel:+61411135918">0411 135 918</a><br><a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a></p>
+          </div>
+          <div>
+            <h3>Area</h3>
+            <p>Adelaide Hills, South Australia</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -158,7 +299,7 @@
   <footer class="site">
     <div class="wrap">
       <div>
-        <strong>Mostly Air</strong><br>
+        <a class="logo" href="index.html"><img src="assets/logo.svg" width="169" height="36" alt="Mostly Air"></a>
         126 Bald Hills Road, Blakiston SA<br>
         <a href="tel:+61411135918">0411 135 918</a> · <a href="mailto:andrew@mostlyair.com.au">andrew@mostlyair.com.au</a>
         <nav aria-label="Footer">
@@ -169,15 +310,13 @@
           <a href="contact.html">Contact</a>
         </nav>
       </div>
-      <div>
-        Air conditioning and refrigeration, Adelaide Hills<br>
-        © 2026 Mostly Air
-      </div>
+      <div>Air conditioning and refrigeration, Adelaide Hills.<br>© 2026 Mostly Air</div>
     </div>
   </footer>
+
   <div class="sticky-call">
-    <a class="btn btn-cyan" href="tel:+61411135918">Call 0411 135 918</a>
-    <a class="btn btn-ghost-light" href="#quote">Request a quote</a>
+    <a class="btn btn-ghost" href="tel:+61411135918">Call</a>
+    <a class="btn btn-cyan" href="#quote">Quote</a>
   </div>
   <script src="js/site.js" defer></script>
 </body>
